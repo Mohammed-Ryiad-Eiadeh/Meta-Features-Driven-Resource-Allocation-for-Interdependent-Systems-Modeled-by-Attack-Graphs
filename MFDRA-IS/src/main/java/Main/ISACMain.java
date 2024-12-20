@@ -197,26 +197,47 @@ public class ISACMain {
                     graphID = word.split("@")[1];
                 }
             }
-            int prediction = trainedModel.predict(sample).getOutput().getID();
-            int groundTruth = sample.getOutput().getID();
+            int prediction = trainedModel
+                    .predict(sample)
+                    .getOutput()
+                    .getID();
+            
+            int groundTruth = sample
+                    .getOutput()
+                    .getID();
+            
             if (clusterToData.get(prediction) != null) { // this if-statement is not necessary if the data is balanced
                 if (findMostFrequent(clusterToData.get(prediction)) == groundTruth) {
                     accuracy++;
                 }
             }
-            var label = map.get(prediction + 1);
-            var index = performanceMatrix.get("Allocation").stream().map(String::toUpperCase).toList().indexOf(label.toUpperCase());
-            var costRelativeReduction = performanceMatrix.get(graphID).get(index);
+            if (clusterToData.get(prediction) == null) { // this if statement is not necessary if the data is balanced and the clusters well describe the data points in the test sets
+                continue;
+            }
+            var label = map.get(findMostFrequent(clusterToData.get(prediction)));
+            var index = performanceMatrix
+                    .get("Allocation")
+                    .stream()
+                    .map(String::toUpperCase)
+                    .toList()
+                    .indexOf(label.toUpperCase());
+            
+            var costRelativeReduction = performanceMatrix
+                    .get(graphID)
+                    .get(index);
+            
             avgAllocationPerformance += Double.parseDouble(costRelativeReduction);
             ArrayList<String> top_K_GroundTruths = new ArrayList<>();
             for (int i = 0; i < top_K; i++) {
                 top_K_GroundTruths.add(map0.get(graphID).get(i).toUpperCase(Locale.ROOT));
             }
-            if (top_K_GroundTruths.contains(label.toUpperCase(Locale.ROOT))) {
+            if (top_K_GroundTruths.contains(label.toUpperCase())) {
                 hit_At_K_acc++;
             }
         }
-        return List.of(accuracy / testPart.getData().size(), avgAllocationPerformance / testPart.getData().size(), hit_At_K_acc / testPart.getData().size());
+        return List.of(accuracy / testPart.getData().size(),
+                avgAllocationPerformance / testPart.getData().size(),
+                hit_At_K_acc / testPart.getData().size());
     }
 
     enum ClusterAlgorithm {
