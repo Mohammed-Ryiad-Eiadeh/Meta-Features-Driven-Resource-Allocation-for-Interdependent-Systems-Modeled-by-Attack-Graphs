@@ -125,3 +125,11 @@ This Table shows the evaluation of ten classifiers and six baselines on a datase
 
 This table shows the evaluation of ten classifiers and six baselines on the synthetic graph dataset shows that Multinomial NB achieved the highest accuracy (0.30), while SVM, KNN, ISAC-Kmeans, and Best-Based-Rank excelled in hit-at-5 (0.95) and hit-at-10 (1.00). CART achieved the fastest inference time (16 ms), while ISAC-Kmeans, despite low accuracy (0.15), performed well in hit-at-5 and hit-at-10. Overall, the proposed framework outperformed the baselines.
 
+**Table 3. Comparison of Execution Time Between Naive Approach and Our Method to Carry Out The Testset Time in Seconds**
+
+| **Dataset**   | **Naive Approach** | **Our Method** | **Gain** |
+|---------------|--------------------|----------------|----------|
+| Real Graph    | 6.142             | 0.0243         | 0.996    |
+| Synthetic     | 194.9636          | 0.2017         | 0.999    |
+
+This table shows that our method significantly outperforms the naive approach in execution time. For the Real Graph dataset, the naive method took 6.142 seconds, while our method reduced it to 0.0243 seconds (99.6% faster). For the Synthetic dataset, the time was reduced from 194.9636 seconds to 0.2017 seconds (99.9% faster), highlighting the efficiency of our approach.
