@@ -134,21 +134,6 @@ This table shows the evaluation of ten classifiers and six baselines on the synt
 
 This table shows that our method significantly outperforms the naive approach in execution time. For the Real Graph dataset, the naive method took 6.142 seconds, while our method reduced it to 0.0243 seconds (99.6% faster). For the Synthetic dataset, the time was reduced from 194.9636 seconds to 0.2017 seconds (99.9% faster), highlighting the efficiency of our approach.
 
-# Conclusion
-This study proposes an efficient resource allocation strategy for securing interdependent systems controlled by a rational defender. By modeling these systems with cyber attack graphs, the research introduces 27 resource allocation methods and node ranking algorithms to guide decision-making within a limited budget, enhancing system security. The framework, integrating graph embedding techniques, outperforms leading methods like global best and ARGOSMART. Using random walk-based node embeddings, it effectively predicts optimal resource allocation strategies, achieving faster execution times and better security improvements on two datasets. Overall, the framework offers a robust solution for decision-making in complex systems, strengthening cybersecurity defenses.
-
-# References
-
-[12] A. R. Hota, A. Clements, S. Sundaram, and S. Bagchi. 2016. Optimal and game-theoretic deployment of security investments in interdependent assets. In International Conference on Decision and Game Theory for Security. 101–113.
-
-[13] S. Jauhar, B. Chen, W. G. Temple, X. Dong, Z. Kalbarczyk, W. H. Sanders, and D. M. Nicol. 2015. Model-based cybersecurity assessment with nescor smart grid failure scenarios. In Dependable Computing (PRDC), 2015 IEEE 21st Pacific Rim International Symposium on. IEEE, 319–324.
-
-[14] G. Modelo-Howard, S. Bagchi, and G. Lebanon. 2008. Determining placement of intrusion detectors for a distributed application through bayesian network modeling. In International Workshop on Recent Advances in Intrusion Detection. Springer, 271–290.
-
-[15] J. Zeng, S. Wu, Y. Chen, R. Zeng, and C. Wu, ‘‘Survey of Attack Graph Analysis Methods from the Perspective of Data and Knowledge Processing,’’ Security and Communication Networks, vol. 2019, 2019.
-
-[16] R. A. Rossi and N. K. Ahmed, ‘‘The network data repository with interactive graph analytics and visualization,’’ in Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence, 2015. [Online]. Available: http://networkrepository.com.
-
 # How to Run the Code (Please Read Carefully)
 
 1) Download the latest version of IntelliJ IDEA.
@@ -169,6 +154,21 @@ This study proposes an efficient resource allocation strategy for securing inter
    - **Step 8**: Now everything is ready to execute the baselines.
 
 **Note: Make sure to configure the desired parameters for each file before executing.**
+
+# Conclusion
+This study proposes an efficient resource allocation strategy for securing interdependent systems controlled by a rational defender. By modeling these systems with cyber attack graphs, the research introduces 27 resource allocation methods and node ranking algorithms to guide decision-making within a limited budget, enhancing system security. The framework, integrating graph embedding techniques, outperforms leading methods like global best and ARGOSMART. Using random walk-based node embeddings, it effectively predicts optimal resource allocation strategies, achieving faster execution times and better security improvements on two datasets. Overall, the framework offers a robust solution for decision-making in complex systems, strengthening cybersecurity defenses.
+
+# References
+
+[12] A. R. Hota, A. Clements, S. Sundaram, and S. Bagchi. 2016. Optimal and game-theoretic deployment of security investments in interdependent assets. In International Conference on Decision and Game Theory for Security. 101–113.
+
+[13] S. Jauhar, B. Chen, W. G. Temple, X. Dong, Z. Kalbarczyk, W. H. Sanders, and D. M. Nicol. 2015. Model-based cybersecurity assessment with nescor smart grid failure scenarios. In Dependable Computing (PRDC), 2015 IEEE 21st Pacific Rim International Symposium on. IEEE, 319–324.
+
+[14] G. Modelo-Howard, S. Bagchi, and G. Lebanon. 2008. Determining placement of intrusion detectors for a distributed application through bayesian network modeling. In International Workshop on Recent Advances in Intrusion Detection. Springer, 271–290.
+
+[15] J. Zeng, S. Wu, Y. Chen, R. Zeng, and C. Wu, ‘‘Survey of Attack Graph Analysis Methods from the Perspective of Data and Knowledge Processing,’’ Security and Communication Networks, vol. 2019, 2019.
+
+[16] R. A. Rossi and N. K. Ahmed, ‘‘The network data repository with interactive graph analytics and visualization,’’ in Proceedings of the Twenty-Ninth AAAI Conference on Artificial Intelligence, 2015. [Online]. Available: http://networkrepository.com.
 
 # Contact With Authors
 
