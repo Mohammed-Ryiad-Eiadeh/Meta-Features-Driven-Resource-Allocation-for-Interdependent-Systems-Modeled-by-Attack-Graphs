@@ -57,7 +57,7 @@ In both test beds, a node `v_i ∈ V` represents either an attack step or a crit
 
 We acknowledge that using diverse graphs improves the meta-learning model's performance, as varied training data helps the model generalize better during test data selection.
 
-### Dataset Summary Table
+# Dataset Summary Table
 
 | **System** | **# Nodes** | **# Edges** | **# Critical Assets** | **$v_s$ / $v_m$** | **Vulnerability** | **Attack Path** | **Risk** | **Graph Type** |
 |------------|-------------|-------------|-----------------------|-------------------|-------------------|-----------------|----------|----------------|
