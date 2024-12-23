@@ -72,4 +72,34 @@ We acknowledge that using diverse graphs improves the meta-learning model's perf
 | ASS2009 [Nr et al., 2015] | 31 | 211 | 9 | 9 / 2 | Undefined | [9,25,14,2] | 0.94 | Directed |
 | AWS03 [Nr et al., 2015] | 42 | 152 | 15 | 21 / 25 | Undefined | [21,24,27,25] | 0.89 | Directed |
 
+Note: all of these datasets are stored in the project directory and is called dynamically so no need to set up their paths.
 
+# Parameter Configuration of Our Experiments
+
+We start by outlining the key hyperparameters used in various components of our framework. For resource allocation, the parameters for the GA, which simulates concurrent attack paths, are as follows: maximum iterations ($M=50$), population size ($N=250$), crossover probability ($m_p=0.4$), mutation rate ($m_r=0.2$), selection ratio ($s_r=0.6$) and weight factor ($Wf=0.001$). The defender's security budget ($S=20$), and the maximum iterations for the PR algorithm ($Rank_{iter}=100$), with epsilon ($\epsilon=0.0001$), the same as for the TR algorithm. In the graph embedding stage, the number of hops ($H=100$), dimension size ($D=256$), number of epochs ($Epoch=100$), learning rate ($\eta=0.01$), and the number of nodes for negative sampling is $NS=|V_m|$. It is important to note that our framework are designed to be applicable to any security budget and various graph types with variable initial security investments. For the classification phase, the embedding results (set of features) is splitted into 60\% for training and 40\% for testing. All experiments have been conducted using Java language (JDK 17) on a gaming machine with an Intel® Core™ i7-8750H CPU @ 2.20GHz (12 CPUs) and 32GB RAM.
+
+# Results
+# Comparison of Various Approaches and Baselines on the 100-Graph Dataset
+
+For ISAC, $k=9$ centroids are used. The 'LibLinear' and 'Multinomial NB' approaches achieve the highest accuracy, while 'Best-Based-Rank' and 'FM' ranked highest in average performance. Note that the Naïve allocation method took 6.142 seconds to process 40 graphs.
+
+| **Algorithm**      | **acc** | **hit-at-5** | **hit-at-10** | **Avg Performance** | **Test time (ms)** | **Times faster** |
+|--------------------|---------|--------------|---------------|---------------------|--------------------|------------------|
+| LeNet-5            | 0.25    | 0.65         | 0.90          | 40.87               | 63                 | 97.49206         |
+| MLP                | 0.20    | 0.85         | 0.95          | 41.40               | **15**             | 409.46667        |
+| FM                 | 0.23    | 0.80         | **1.00**      | **42.56**           | 41                 | 1490.46488       |
+| SVM                | 0.25    | 0.68         | 0.90          | 41.11               | **15**             | 409.46667        |
+| LR                 | 0.18    | **0.90**     | 0.95          | 40.94               | 16                 | 383.87500        |
+| KNN                | 0.15    | 0.75         | 0.85          | 38.66               | 16                 | 383.87500        |
+| Cart               | 0.20    | 0.65         | 0.88          | 40.38               | **15**             | 409.46667        |
+| Liblinear          | **0.30**| 0.78         | 0.98          | 42.30               | 16                 | 383.87500        |
+| XGBoost            | 0.25    | 0.80         | 0.90          | 40.33               | **15**             | 409.46667        |
+| Multinomial NB     | **0.30**| 0.53         | 0.90          | 39.60               | 31                 | 198.12903        |
+| ARGOSMART          | 0.20    | 0.70         | 0.90          | 39.97               | 18                 | 341.222          |
+| Best-Based-Rank    | 0.23    | 0.80         | **1.00**      | **42.56**           | 16                 | 383.875          |
+| Global Best        | 0.20    | 0.45         | 0.88          | 37.70               | 63                 | 97.492           |
+| ISAC-Kmeans        | 0.15    | 0.45         | 0.90          | 38.57               | 285                | 21.551           |
+| ISAC-Kmeans++      | 0.20    | 0.55         | 0.95          | 40.02               | 165                | 37.224           |
+| ISAC-HDBSCAN       | 0.20    | 0.45         | 0.88          | 37.70               | 154                | 39.883           |
+
+This Table shows the evaluation of ten classifiers and six baselines on a dataset of 100 graphs, using metrics like accuracy, hit-at-5, hit-at-10, and inference time. LibLinear and Multinomial NB achieve the highest accuracy (0.30), while FM and Best-Based-Rank lead in hit-at-10 (1.00). LR outperforms in hit-at-5 (0.90), and MLP, SVM, XGBoost, and CART achieve the fastest inference times (15 ms). Best-Based-Rank is the top-performing baseline, but several classifiers surpass it. The framework demonstrates superior accuracy, efficiency, and robustness, with significant speed-up over Naïve allocation methods.
