@@ -9,7 +9,6 @@ This framework aims to optimize the security of interdependent systems using gen
 ![Screenshot (15)](https://github.com/user-attachments/assets/dd3b0d3c-3f75-4b59-966a-43b26dc82d93)
 
 # Customized Fitness Function
-
 $F_2(P) = \max_{P \in P_m} \big(\exp\big(-\sum_{(v_i,v_j)\in P} {x_{i,j}}\big) + Wf\sum_{v_m\in P} L_m\big).$
    
    $P$ is the given attack path.
@@ -25,7 +24,6 @@ $F_2(P) = \max_{P \in P_m} \big(\exp\big(-\sum_{(v_i,v_j)\in P} {x_{i,j}}\big) +
 This function accounts for the total asset loss that the system will lose if the attack is occured successfully.
 
 # Our Contribution
-
 - We introduce a meta-learning method for predicting efficient security resource allocation techniques to secure interconnected systems with interdependent assets. Our approach quantifies the improvements of different security resource allocation decisions.
 
 - We implement a node-embedding approach that uses random walks, negative sampling, and gradient descent to capture the attack graph's structural features as meta-features. These meta-features are combined with our performance matrix (representing different allocation methods) to construct a dataset, which is used to train meta-learning classifiers for predicting the most efficient allocation methods.
@@ -35,3 +33,43 @@ This function accounts for the total asset loss that the system will lose if the
 - We assess the effectiveness of our defense strategies across two attack graph testbeds: a real-world testbed with 100 graphs and a synthetic testbed with 1000 graphs. We compare our results against six meta-learning baselines.
 
 - We release our framework's source code to the research community.
+
+# Datasets We Used In Our Work
+For the evaluation of our approach, we use two sets of attack graphs representing different interdependent systems and network topologies:
+
+1. **Test Bed 1**: This consists of 100 attack graphs, grouped into three categories:
+    - **Category 1**: Four real-world interdependent systems:
+        - DER.1 [13]
+        - SCADA [12]
+        - E-commerce [14]
+        - VOIP [14]
+    - **Category 2**: Two graph typologies, HG1 and HG2, from prior research [15]
+    - **Category 3**: 94 datasets from the interactive scientific graph data repository [16]:
+        - aves-sparrow-social-2009 (ASC2009)
+        - aves-sparrow-lyon-flock-season3 (ASFS3)
+        - aves-weaver-social-03 (AWS03)
+        - aves-barn-swallow-non-physical (ABSNP)
+    This repository features network data from leading US universities.
+
+2. **Test Bed 2**: This consists of 1000 randomly generated attack graphs.
+
+In both test beds, a node `v_i ∈ V` represents either an attack step or a critical asset, and all graphs are directed. **Table 1** below provides a detailed description of the ten datasets used in our experiments, including the number of nodes, edges, critical assets, vulnerability types, attack paths, risks, and graph types. The risk is defined as: $\prod_{(v_i,v_j)\in P} \exp(-{x_{i,j}})$
+
+We acknowledge that using diverse graphs improves the meta-learning model's performance, as varied training data helps the model generalize better during test data selection.
+
+### Dataset Summary Table
+
+| **System** | **# Nodes** | **# Edges** | **# Critical Assets** | **$v_s$ / $v_m$** | **Vulnerability** | **Attack Path** | **Risk** | **Graph Type** |
+|------------|-------------|-------------|-----------------------|-------------------|-------------------|-----------------|----------|----------------|
+| SCADA [Hota et al., 2016] | 13 | 20 | 6 | 1 / 12 | Malicious code | [1,6,11,12] | 0.76 | Directed |
+| DER.1 [Jauhar et al., 2015] | 22 | 32 | 6 | 9 / 12 | Man-in-the-middle | [9,10,11,12] | 0.09 | Directed |
+| E-Commerce [Modelo et al., 2008] | 20 | 32 | 4 | 1 / 7 | SQL injection | [1,2,5,6,7] | 0.19 | Directed |
+| VOIP [Modelo et al., 2008] | 22 | 35 | 4 | 1 / 6 | Cross-site scripting | [1,2,4,6] | 0.55 | Directed |
+| HG1 [Zeng et al., 2019] | 7 | 10 | 2 | 1 / 7 | Undefined | [1,5,7] | 0.38 | Directed |
+| HG2 [Zeng et al., 2019] | 15 | 22 | 5 | 2 / 7 | Undefined | [2,1,3,7] | 0.17 | Directed |
+| ABSNP [Nr et al., 2015] | 17 | 122 | 6 | 1 / 4 | Undefined | [1,17,4] | 0.69 | Directed |
+| ASFS3 [Nr et al., 2015] | 27 | 163 | 9 | 4 / 24 | Undefined | [4,23,11,25,16,24] | 0.59 | Directed |
+| ASS2009 [Nr et al., 2015] | 31 | 211 | 9 | 9 / 2 | Undefined | [9,25,14,2] | 0.94 | Directed |
+| AWS03 [Nr et al., 2015] | 42 | 152 | 15 | 21 / 25 | Undefined | [21,24,27,25] | 0.89 | Directed |
+
+
