@@ -24,3 +24,14 @@ $F_2(P) = \max_{P \in P_m} \big(\exp\big(-\sum_{(v_i,v_j)\in P} {x_{i,j}}\big) +
    
 This function accounts for the total asset loss that the system will lose if the attack is occured successfully.
 
+# Our Contribution
+
+- We introduce a meta-learning method for predicting efficient security resource allocation techniques to secure interconnected systems with interdependent assets. Our approach quantifies the improvements of different security resource allocation decisions.
+
+- We implement a node-embedding approach that uses random walks, negative sampling, and gradient descent to capture the attack graph's structural features as meta-features. These meta-features are combined with our performance matrix (representing different allocation methods) to construct a dataset, which is used to train meta-learning classifiers for predicting the most efficient allocation methods.
+
+- We benchmark the performance of seven different graph-theoretic resource allocation methods to counter various attack models aimed at compromising interdependent systems. We also apply six node-ranking algorithms to optimize resource allocation decisions based on the importance of critical assets.
+
+- We assess the effectiveness of our defense strategies across two attack graph testbeds: a real-world testbed with 100 graphs and a synthetic testbed with 1000 graphs. We compare our results against six meta-learning baselines.
+
+- We release our framework's source code to the research community.
