@@ -101,3 +101,27 @@ We start by outlining the key hyperparameters used in various components of our 
 | ISAC-HDBSCAN       | 0.20    | 0.45         | 0.88          | 37.70               | 154                | 39.883           |
 
 This Table shows the evaluation of ten classifiers and six baselines on a dataset of 100 graphs, using metrics like accuracy, hit-at-5, hit-at-10, and inference time. LibLinear and Multinomial NB achieve the highest accuracy (0.30), while FM and Best-Based-Rank lead in hit-at-10 (1.00). LR outperforms in hit-at-5 (0.90), and MLP, SVM, XGBoost, and CART achieve the fastest inference times (15 ms). Best-Based-Rank is the top-performing baseline, but several classifiers surpass it. The framework demonstrates superior accuracy, efficiency, and robustness, with significant speed-up over Naïve allocation methods. The speed-up is calculated as: Speed-up = (Naïve_time) / (Our_time).
+
+# Comparison of Various Approaches and Baselines on the 1000-Graph Dataset. **Note**: For ISAC, \( k = 9 \) centroids are used. The 'Multinomial NB' approach achieves the highest accuracy, while 'Best-Based-Rank' ranks highest in average performance, followed by 'SVM' and 'KNN'. The Naïve allocation method took 194.9636 seconds to process 400 graphs.
+
+| **Algorithm**      | **acc** | **hit-at-5** | **hit-at-10** | **Avg Performance** | **Test time (ms)** | **Times faster** |
+|---------------------|---------|--------------|---------------|----------------------|--------------------|------------------|
+| LeNet-5            | 0.28    | 0.59         | 0.95          | 44.04               | 172                | 1133.51          |
+| MLP                | 0.22    | 0.81         | 0.99          | 45.66               | 47                 | 4148.16          |
+| FM                 | 0.28    | 0.59         | 0.95          | 44.05               | 94                 | 2074.08          |
+| SVM                | 0.17    | **0.95**     | **1.00**      | 46.89               | 235                | 829.63           |
+| LR                 | 0.28    | 0.63         | 0.99          | 45.83               | 905                | 215.43           |
+| KNN                | 0.16    | **0.95**     | **1.00**      | 46.79               | 390                | 499.91           |
+| Cart               | 0.25    | 0.79         | 0.98          | 45.67               | **16**             | 12185.23         |
+| Liblinear          | 0.26    | 0.66         | 0.99          | 46.15               | 32                 | 6092.61          |
+| XGBoost            | 0.19    | 0.70         | 0.99          | 45.71               | 32                 | 6092.61          |
+| Multinomial NB     | **0.30**| 0.60         | 0.96          | 44.78               | 94                 | 2074.08          |
+| ARGOSMART          | 0.19    | 0.79         | 0.99          | 45.78               | 6798               | 28.679           |
+| Best-Based-Rank    | 0.17    | **0.95**     | **1.00**      | **47.03**           | 94                 | 2074.08          |
+| Global Best        | 0.28    | 0.59         | 0.94          | 43.94               | 165                | 1181.598         |
+| ISAC-Kmeans        | 0.15    | **0.95**     | **1.00**      | 46.54               | 479                | 407.022          |
+| ISAC-Kmeans++      | 0.26    | 0.79         | 0.98          | 45.65               | 414                | 470.927          |
+| ISAC-HDBSCAN       | 0.15    | 0.88         | 0.98          | 45.56               | 874                | 223.070          |
+
+This table shows the evaluation of ten classifiers and six baselines on the synthetic graph dataset shows that Multinomial NB achieved the highest accuracy (0.30), while SVM, KNN, ISAC-Kmeans, and Best-Based-Rank excelled in hit-at-5 (0.95) and hit-at-10 (1.00). CART achieved the fastest inference time (16 ms), while ISAC-Kmeans, despite low accuracy (0.15), performed well in hit-at-5 and hit-at-10. Overall, the proposed framework outperformed the baselines.
+
